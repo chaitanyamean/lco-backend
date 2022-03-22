@@ -11,7 +11,9 @@ const cors = require("cors")
 const auth =  require("./middlewares/auth")
 
 
-app.use(cors())
+app.use(cors({
+  origin: "*"
+}))
 
 const io = require('socket.io')(server, {
   cors: {
