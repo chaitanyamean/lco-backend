@@ -9,6 +9,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors")
 const auth =  require("./middlewares/auth")
+const server = require('http').createServer(app);
 
 
 app.use(cors({
