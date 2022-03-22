@@ -10,7 +10,27 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors")
 const auth =  require("./middlewares/auth")
 
+
 app.use(cors())
+
+const io = require('socket.io')(server, {
+  cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+});
+
+io.on("connection", (socket) => {
+  // console.log("What is socket: ", socket)
+  console.log("Socket is active to be connected");
+
+  socket.on('chat', (payload) => {
+      // console.log("What is payload", payload)
+      io.emit("chat", payload);
+  })
+
+});
+
 app.get("/", (req, res) => {
   res.json({
     name: "krishna",
