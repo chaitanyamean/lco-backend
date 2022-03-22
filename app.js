@@ -7,7 +7,10 @@ app.use(express.json());
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cors = require("cors")
 const auth =  require("./middlewares/auth")
+
+app.use(cors())
 app.get("/", (req, res) => {
   res.json({
     name: "krishna",
